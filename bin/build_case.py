@@ -33,7 +33,7 @@ if __name__ == '__main__':
     runner = ExecuteCase(report_info)
     runner.execute_discover_case(case_build_path)
     response = requests.post(
-        url='http://192.168.83.1:9000/saveTestInfo/',
+        url='http://192.168.1.6:9000/saveTestInfo/',
         json=conf.test_case_suite,
         headers={
             'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     print('回传用例:', response.text)
 
     response = requests.post(
-        url='http://192.168.83.1:9000/caseExeStatus/',
+        url='http://192.168.1.6:9000/caseExeStatus/',
         json={'pc_id':pc_id},
         headers={
             'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ if __name__ == '__main__':
 
 
     response = requests.post(
-        url='http://192.168.83.1:9000/getTestReport/',
+        url='http://192.168.1.6:9000/getTestReport/',
         files= {'test_report':open(report_info['report_dir'],'rb') },
         # headers={
         #     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
